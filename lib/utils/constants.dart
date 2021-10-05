@@ -11,7 +11,7 @@ The Silicon Mountain Conference features talks, workshops, panel discussions, de
 This year, the Conference is focused on SHOWCASING the technologies, products and services being cooked up in Silicon Mountain. These technologies, products and services span real estate, healthcare, finance and a myriad others to be discovered.""""";
 
 final tabs =  [
-  SMTab(title: "Home", icon: CupertinoIcons.home),
+  SMTab(title: "SM", icon: CupertinoIcons.home),
   SMTab(title: "Agenda", icon: CupertinoIcons.calendar),
   SMTab(title: "Speakers", icon: CupertinoIcons.group),
   SMTab(title: "Home", icon: CupertinoIcons.home)

@@ -2,7 +2,9 @@
     package="com.smconf.app.smconfapp">
    <application
         android:label="smconfapp"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
+       <meta-data android:name="com.google.android.geo.API_KEY"
+           android:value="AIzaSyBecnAONB7omX7O7ghHwrvab_C0ZGI5oZU"/>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
