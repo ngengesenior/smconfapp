@@ -1,44 +1,78 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:smconfapp/data/speaker.dart';
 class SpeakerItem extends StatelessWidget {
-  const SpeakerItem({Key? key}) : super(key: key);
+  final Speaker speaker;
+  const SpeakerItem({Key? key,required this.speaker}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
+    
+   return Card(
+     child: Row(
         children: [
-          Row(
+          CircleAvatar(
+            backgroundImage: NetworkImage(speaker.imageUrl),
+          radius: 50,),
+          SizedBox(width: 5,),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox.fromSize(child: Image.network("https://images.unsplash.com/photo-1531727991582-cfd25ce79613?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2734&q=80"),size: Size(150, 200),),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Text("Tanero Chris"),
-                  SizedBox(height: 5,),
-                  Text("Wordpress Guru"),
-                  SizedBox(height: 5,),
-                  Text("KiffCodes")
-                ],
-              )
+              Text(speaker.name),
+              SizedBox(height: 4,),
+              (speaker.company) != null? Text(speaker.company!):Text(""),
 
             ],
           ),
-          //Separator
-          SizedBox(height: 10,),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Icon(Icons.sports_soccer),
-              Text("Building a Startup with Zero Capital")
-            ],
-          ),
-          Center(
-            child: ElevatedButton(onPressed: (){},
-                child: Text("Show Abstract")),
-          ),
-          SizedBox(height: 10,)
+          Spacer(),
+          IconButton(onPressed: (){}, icon:FaIcon(FontAwesomeIcons.globe) ),
+          IconButton(onPressed: (){}, icon: FaIcon(FontAwesomeIcons.twitter,
+            color: Color(0xFF1DA1F2),))
+
         ],
       ),
+   );
+    
+
+
+
+      /*Container(
+      child: Row(
+        children: [
+          CircleAvatar(
+            radius: 50,
+            backgroundImage: NetworkImage(speaker.imageUrl),
+          ),
+          Column(children: [
+            Text(speaker.name)
+          ],)
+        ],
+      ),
+    );*/
+  }
+}
+
+class SpeakerWidget extends StatelessWidget {
+  final Speaker speaker;
+  const SpeakerWidget({Key? key,required this.speaker}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Container(
+          width: 100,
+          height: 100,
+          decoration: BoxDecoration(
+            image: DecorationImage(image: NetworkImage(speaker.imageUrl))
+          ),
+        ),
+        SizedBox(height: 4,),
+        Text(speaker.name)
+      ],
     );
   }
 }
+
