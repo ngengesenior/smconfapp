@@ -176,7 +176,7 @@ class SpeakersList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(itemBuilder: (context,index){
-      return SpeakerItem(speaker: speaker1,);
+      // TODO return SpeakerItem(speaker: );
     },
         separatorBuilder: (context,index)=> Divider(height: 2,),
         itemCount: 30);

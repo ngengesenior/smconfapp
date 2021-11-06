@@ -13,15 +13,15 @@ class SpeakerItem extends StatelessWidget {
      child: Row(
         children: [
           CircleAvatar(
-            backgroundImage: NetworkImage(speaker.imageUrl),
+            backgroundImage: NetworkImage(speaker.photoUrl!),
           radius: 50,),
           SizedBox(width: 5,),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(speaker.name),
+              Text(speaker.name!),
               SizedBox(height: 4,),
-              (speaker.company) != null? Text(speaker.company!):Text(""),
+              (speaker.title) != null? Text(speaker.title!):Text(""),
 
             ],
           ),
@@ -66,11 +66,11 @@ class SpeakerWidget extends StatelessWidget {
           width: 100,
           height: 100,
           decoration: BoxDecoration(
-            image: DecorationImage(image: NetworkImage(speaker.imageUrl))
+            image: DecorationImage(image: NetworkImage(speaker.photoUrl!))
           ),
         ),
         SizedBox(height: 4,),
-        Text(speaker.name)
+        Text(speaker.name!)
       ],
     );
   }
