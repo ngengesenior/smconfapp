@@ -8,6 +8,7 @@ import 'package:smconfapp/sample_data/sample_data.dart';
 import 'package:smconfapp/screens/home.dart';
 import 'package:smconfapp/screens/map.dart';
 import 'package:smconfapp/screens/schedule.dart';
+import 'package:smconfapp/screens/speaker_list.dart';
 import 'package:smconfapp/utils/app_color.dart';
 import 'package:smconfapp/widgets/speaker_widget.dart';
 
@@ -119,7 +120,7 @@ class _MyHomePageState extends State<MyHomePage> {
       }
       break;
       case 2:{
-        widget = SpeakersList();
+        widget = SpeakerList();
       }
       break;
       default:{
@@ -145,7 +146,7 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           Home(),
           ScheduleScreen(),
-          SpeakersList(),
+          SpeakerList(),
           MapWidget()
         ],
 
@@ -169,17 +170,4 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-class SpeakersList extends StatelessWidget {
-  const SpeakersList({Key? key}) : super(key: key);
-
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.separated(itemBuilder: (context,index){
-      // TODO return SpeakerItem(speaker: );
-    },
-        separatorBuilder: (context,index)=> Divider(height: 2,),
-        itemCount: 30);
-  }
-}
 

@@ -21,7 +21,9 @@ class SpeakerItem extends StatelessWidget {
             children: [
               Text(speaker.name!),
               SizedBox(height: 4,),
-              (speaker.title) != null? Text(speaker.title!):Text(""),
+              (speaker.title) != null? Container(
+                  width: 200,
+                  child: Text(speaker.title!)):Text(""),
 
             ],
           ),
