@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "192685647255",
+    "project_id": "fact-checker-api",
+    "storage_bucket": "fact-checker-api.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:192685647255:android:df3e02e3c678baaf5550d2",
+        "android_client_info": {
+          "package_name": "com.smconf.app.smconfapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "192685647255-s3qk994bqc7g99a7porbh35qk3p9djin.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBm6yf7PPvEPlekxjj3rzM18xxQreL4JWA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "192685647255-s3qk994bqc7g99a7porbh35qk3p9djin.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "192685647255-j3kjtngt7636j7cqq55dpdo1kndahmku.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.smconf.app.smconfapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

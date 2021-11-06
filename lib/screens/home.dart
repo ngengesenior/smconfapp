@@ -1,13 +1,15 @@
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:smconfapp/data/speaker.dart';
-import 'package:smconfapp/sample_data/sample_data.dart';
 import 'package:smconfapp/utils/app_color.dart';
 import 'package:smconfapp/utils/constants.dart';
-import 'package:smconfapp/widgets/speaker_widget.dart';
+import 'package:smconfapp/utils/utils.dart';
+import 'package:smconfapp/widgets/sponsors_caroussel.dart';
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {
@@ -32,10 +34,37 @@ class Home extends StatelessWidget {
           centerTitle: true,
         ),
         SliverPadding(
+          padding: EdgeInsets.only(left: 8.0,right: 8.0,bottom: 16.0),
+          sliver: SliverToBoxAdapter(
+            child: Image.asset("assets/images/sm4.jpeg"),
+          ),
+        ),
+        SliverPadding(
           padding: EdgeInsets.only(left: 8.0,right: 8.0),
           sliver: SliverToBoxAdapter(
-            child: Text(aboutSiliconMountain,
-            style: TextStyle(letterSpacing:3),),
+            child: Column(
+              children: [
+                Text("About Silicon Mountain Conference",style: GoogleFonts.raleway(
+                    textStyle: Theme.of(context).textTheme.headline4),
+                  textAlign: TextAlign.start,
+                ),
+                ExpandableText(text: aboutConf,),
+              ],
+            ),
+          ),
+        ),
+        SliverPadding(
+          padding: EdgeInsets.only(left: 8.0,right: 8.0,top: 16),
+          sliver: SliverToBoxAdapter(
+            child: Column(
+              children: [
+                Text("About Silicon Mountain",style: GoogleFonts.raleway(
+                    textStyle: Theme.of(context).textTheme.headline4),
+                  textAlign: TextAlign.start,
+                ),
+                ExpandableText(text: aboutSiliconMountain,),
+              ],
+            ),
           ),
         ),
         SliverPadding(
@@ -62,34 +91,26 @@ class Home extends StatelessWidget {
         SliverPadding(
           padding: EdgeInsets.all(16.0),
           sliver: SliverToBoxAdapter(
-            child: Text("Speakers",
-            textAlign: TextAlign.center,
+            child: Text("Our Sponsors and Partners",
             style: GoogleFonts.raleway(color: mainColor,
             textStyle: Theme.of(context).textTheme.headline5),),
           ),
         ),
         SliverToBoxAdapter(
           child: Container(
-            height: 120,
-            child: ListView.separated(itemBuilder: (context,index){
-              return SpeakerWidget(speaker: speakers[index]);
-            },itemCount: speakers.length,
-              separatorBuilder: (context,index) {
-              return SizedBox(width: 10,);
-              },
-            scrollDirection: Axis.horizontal,shrinkWrap: true,),
-          ),
+            height: 400,
+            child: SponsorsWidget(),
+          )
+          
+          /*CarouselSlider(
+            options: CarouselOptions(height: 400,
+              aspectRatio: 4 / 3,
+              autoPlay: true,
+              enlargeCenterPage: true
+            ),
+            items: carouselImages.map((e) => Image.asset("assets/images/$e")).toList(),
+          )*/
         ),
-        SliverPadding(
-          padding: EdgeInsets.all(16.0),
-          sliver: SliverToBoxAdapter(
-            child: Text("Sponsors",
-              textAlign: TextAlign.center,
-              style: GoogleFonts.raleway(color: mainColor,
-                  textStyle: Theme.of(context).textTheme.headline5),),
-          ),
-        )
-
       ],
     );
   }

@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -8,16 +9,47 @@ import 'package:smconfapp/screens/home.dart';
 import 'package:smconfapp/screens/map.dart';
 import 'package:smconfapp/screens/schedule.dart';
 import 'package:smconfapp/utils/app_color.dart';
-import 'package:smconfapp/utils/constants.dart';
 import 'package:smconfapp/widgets/speaker_widget.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   LicenseRegistry.addLicense(() async* {
     final license = await rootBundle.loadString('google_fonts/OFL.txt');
     yield LicenseEntryWithLineBreaks(['google_fonts'], license);
   });
-  runApp(MyApp());
+  runApp(SMConfApp());
 }
+
+class SMConfApp extends StatefulWidget {
+  const SMConfApp({Key? key}) : super(key: key);
+
+  @override
+  _SMConfAppState createState() => _SMConfAppState();
+}
+
+class _SMConfAppState extends State<SMConfApp> {
+  final Future<FirebaseApp> _initialization = Firebase.initializeApp();
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder(builder:
+        (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+
+      if (snapshot.hasError) {
+        return Center(child: Text("Something went wrong"),);
+      }
+
+      // Once complete, show your application
+      if (snapshot.connectionState == ConnectionState.done) {
+        return MyApp();
+      }
+
+      // Otherwise, show something whilst waiting for initialization to complete
+      return Center(child: CircularProgressIndicator(),);
+    },future: _initialization,);
+  }
+}
+
 
 class MyApp extends StatelessWidget {
   @override
