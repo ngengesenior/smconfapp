@@ -36,7 +36,7 @@ class Home extends StatelessWidget {
         SliverPadding(
           padding: EdgeInsets.only(left: 8.0,right: 8.0,bottom: 16.0),
           sliver: SliverToBoxAdapter(
-            child: Image.asset("assets/images/sm4.jpeg"),
+            child: Image.asset("assets/images/smconf.jpg"),
           ),
         ),
         SliverPadding(
@@ -44,7 +44,7 @@ class Home extends StatelessWidget {
           sliver: SliverToBoxAdapter(
             child: Column(
               children: [
-                Text("About Silicon Mountain Conference",style: GoogleFonts.raleway(
+                Text("About SMConf",style: GoogleFonts.raleway(
                     textStyle: Theme.of(context).textTheme.headline4),
                   textAlign: TextAlign.start,
                 ),
@@ -91,7 +91,7 @@ class Home extends StatelessWidget {
         SliverPadding(
           padding: EdgeInsets.all(16.0),
           sliver: SliverToBoxAdapter(
-            child: Text("Our Sponsors and Partners",
+            child: Text("Our Sponsors",
             style: GoogleFonts.raleway(color: mainColor,
             textStyle: Theme.of(context).textTheme.headline5),),
           ),
@@ -99,18 +99,23 @@ class Home extends StatelessWidget {
         SliverToBoxAdapter(
           child: Container(
             height: 400,
-            child: SponsorsWidget(),
-          )
-          
-          /*CarouselSlider(
-            options: CarouselOptions(height: 400,
-              aspectRatio: 4 / 3,
-              autoPlay: true,
-              enlargeCenterPage: true
-            ),
-            items: carouselImages.map((e) => Image.asset("assets/images/$e")).toList(),
-          )*/
+            child: SponsorsPartnersWidget(collectionName: "sponsors-update",),
+          ),
         ),
+        SliverPadding(
+          padding: EdgeInsets.all(16.0),
+          sliver: SliverToBoxAdapter(
+            child: Text("Our Partners",
+              style: GoogleFonts.raleway(color: mainColor,
+                  textStyle: Theme.of(context).textTheme.headline5),),
+          ),
+        ),
+        SliverToBoxAdapter(
+          child: Container(
+            height: 400,
+            child: SponsorsPartnersWidget(collectionName: "sponsors",),
+          ),
+        )
       ],
     );
   }

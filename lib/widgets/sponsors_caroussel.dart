@@ -3,18 +3,19 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 
-class SponsorsWidget extends StatefulWidget {
-  const SponsorsWidget({Key? key}) : super(key: key);
+class SponsorsPartnersWidget extends StatefulWidget {
+  final String collectionName;
+  const SponsorsPartnersWidget({Key? key,required this.collectionName}) : super(key: key);
 
   @override
-  _SponsorsWidgetState createState() => _SponsorsWidgetState();
+  _SponsorsPartnersWidgetState createState() => _SponsorsPartnersWidgetState();
 }
 
-class _SponsorsWidgetState extends State<SponsorsWidget> {
+class _SponsorsPartnersWidgetState extends State<SponsorsPartnersWidget> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-      stream: FirebaseFirestore.instance.collection('sponsors').snapshots(),
+      stream: FirebaseFirestore.instance.collection(widget.collectionName).snapshots(),
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
         if(snapshot.hasData){
           return CarouselSlider(

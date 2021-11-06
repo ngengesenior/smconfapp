@@ -16,18 +16,19 @@ class SpeakerItem extends StatelessWidget {
             backgroundImage: NetworkImage(speaker.photoUrl!),
           radius: 50,),
           SizedBox(width: 5,),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(speaker.name!),
-              SizedBox(height: 4,),
-              (speaker.title) != null? Container(
-                  width: 200,
-                  child: Text(speaker.title!)):Text(""),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(speaker.name!),
+                SizedBox(height: 4,),
+                (speaker.title) != null? Container(
 
-            ],
+                    child: Text(speaker.title!)):Text(""),
+
+              ],
+            ),
           ),
-          Spacer(),
           IconButton(onPressed: (){}, icon:FaIcon(FontAwesomeIcons.globe) ),
           IconButton(onPressed: (){}, icon: FaIcon(FontAwesomeIcons.twitter,
             color: Color(0xFF1DA1F2),))
