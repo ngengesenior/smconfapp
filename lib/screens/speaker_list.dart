@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smconfapp/data/speaker.dart';
+import 'package:smconfapp/screens/speaker_detail.dart';
 import 'package:smconfapp/widgets/speaker_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -29,7 +30,12 @@ class SpeakerList extends StatelessWidget {
           if(snapshot.hasData){
             return ListView.separated(itemBuilder: (BuildContext context, index){
               Map<String, dynamic> speakerMap = Map<String,dynamic>.from(snapshot.data!.docs[index].data()); //;
-              return SpeakerItem(speaker: Speaker.fromJson(speakerMap))
+              return GestureDetector(
+                onTap: (){
+
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => SpeakerDetail(speaker: Speaker.fromJson(speakerMap))));
+                },
+                  child: SpeakerItem(speaker: Speaker.fromJson(speakerMap)))
               ;
             },
                 separatorBuilder: (BuildContext context, int index) => const Divider(height: 2,), itemCount:snapshot.data!.docs.length);
