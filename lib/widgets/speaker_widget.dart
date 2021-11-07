@@ -12,9 +12,12 @@ class SpeakerItem extends StatelessWidget {
    return Card(
      child: Row(
         children: [
-          CircleAvatar(
-            backgroundImage: NetworkImage(speaker.photoUrl!),
-          radius: 50,),
+          Hero(
+            tag: speaker.name!,
+            child: CircleAvatar(
+              backgroundImage: NetworkImage(speaker.photoUrl!),
+            radius: 50,),
+          ),
           SizedBox(width: 5,),
           Expanded(
             child: Column(
@@ -29,7 +32,8 @@ class SpeakerItem extends StatelessWidget {
               ],
             ),
           ),
-          IconButton(onPressed: (){}, icon:FaIcon(FontAwesomeIcons.globe) ),
+          IconButton(onPressed: (){}, icon:FaIcon(FontAwesomeIcons.linkedinIn),
+          color: Color(0xFF0077b5),),
           IconButton(onPressed: (){}, icon: FaIcon(FontAwesomeIcons.twitter,
             color: Color(0xFF1DA1F2),))
 
