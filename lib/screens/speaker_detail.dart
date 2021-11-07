@@ -3,12 +3,24 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smconfapp/data/speaker.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SpeakerDetail extends StatelessWidget {
   final Speaker speaker;
 
   const SpeakerDetail({Key? key, required this.speaker}) : super(key: key);
 
+  Future<void> _launchInBrowser(String url) async {
+    if (await canLaunch(url) && url.isNotEmpty) {
+      await launch(
+        url,
+        forceSafariVC: false,
+        forceWebView: false,
+      );
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
   @override
   Widget build(BuildContext context) {
     String twitterHandle = "";
@@ -60,7 +72,9 @@ class SpeakerDetail extends StatelessWidget {
                                   color: Colors.white,
                                 )),
                             IconButton(
-                                onPressed: () {},
+                                onPressed: () async {
+                                 await _launchInBrowser(speaker.twitter!);
+                                },
                                 icon: FaIcon(
                                   FontAwesomeIcons.twitter,
                                   color: Colors.white,
@@ -109,7 +123,9 @@ class SpeakerDetail extends StatelessWidget {
                     Row(
                       children: [
                         IconButton(
-                            onPressed: () {},
+                            onPressed: () async {
+                              _launchInBrowser(speaker.linkedIn!);
+                            },
                             icon: FaIcon(FontAwesomeIcons.linkedinIn),
                             color: Color(0xFF0077b5)),
                         Text("@$linkedInHandle",
@@ -124,13 +140,21 @@ class SpeakerDetail extends StatelessWidget {
                     Row(
                       children: [
                         IconButton(
-                            onPressed: () {},
+                            onPressed: () async {
+                             await _launchInBrowser(speaker.twitter!);
+                            },
                             icon: FaIcon(FontAwesomeIcons.twitter),
                             color: Color(0xFF1DA1F2)),
-                        Text("@$twitterHandle",
-                        style: TextStyle(
-                          color: Color(0xFF1DA1F2)
-                        ),)
+                        GestureDetector(
+                          onTap: () async{
+                            await _launchInBrowser(speaker.twitter!);
+
+                          },
+                          child: Text("@$twitterHandle",
+                          style: TextStyle(
+                            color: Color(0xFF1DA1F2)
+                          ),),
+                        )
                       ],
                     ),
                   ],
